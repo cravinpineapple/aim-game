@@ -7,6 +7,7 @@ import java.awt.GridLayout;
 import java.awt.BorderLayout;
 
 import javax.swing.ButtonGroup;
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -27,6 +28,7 @@ public class MenuScreen {
 	private JRadioButton[] targetShapeButtons = new JRadioButton[3];
 	private JRadioButton[] targetSizeButtons = new JRadioButton[3];
 	private JRadioButton[] intervalSpeedButtons = new JRadioButton[3];
+	private JButton startButton = new JButton("Start!");
 
 	public MenuScreen(JFrame window) {
 		this.window = window;
@@ -67,6 +69,10 @@ public class MenuScreen {
 		centerPanel.add(intervalSpeedText);
 		centerPanel.add(intervalSpeedButtonsPanel);
 		cp.add(BorderLayout.CENTER, centerPanel);
+
+		JPanel southPanel = new JPanel();
+		southPanel.add(startButton);
+		cp.add(BorderLayout.SOUTH, southPanel);
 	}
 
 	// initializes all the radio buttons along with their tag.
