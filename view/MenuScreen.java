@@ -13,6 +13,8 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 
+import model.Aim;
+
 public class MenuScreen {
 	
 	private JFrame window;
@@ -73,6 +75,9 @@ public class MenuScreen {
 		JPanel southPanel = new JPanel();
 		southPanel.add(startButton);
 		cp.add(BorderLayout.SOUTH, southPanel);
+
+		Aim aimModel = new Aim();
+		aimModel.init(this);
 	}
 
 	// initializes all the radio buttons along with their tag.
@@ -118,5 +123,33 @@ public class MenuScreen {
 		}
 	}
 
+	public int getSelected(JRadioButton[] buttonArray) {
+		for (int i = 0; i < 3; i++) {
+			if (buttonArray[i].isSelected()) {
+				return i;
+			}
+		}
 
+		return -1;
+	}
+
+	public JRadioButton[] getBackgroundColorButtons() {
+		return backgroundColorButtons;
+	}
+
+	public JRadioButton[] getShapeColorButtons() {
+		return shapeColorButtons;
+	}
+
+	public JRadioButton[] getTargetShapeButtons() {
+		return targetShapeButtons;
+	}
+
+	public JRadioButton[] getTargetSizeButtons() {
+		return targetSizeButtons;
+	}
+
+	public JRadioButton[] getIntervalSpeedButtons() {
+		return intervalSpeedButtons;
+	}
 }
