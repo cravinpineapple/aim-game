@@ -13,11 +13,13 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 
+import controller.MenuListener;
 import model.Aim;
 
 public class MenuScreen {
 	
 	private JFrame window;
+	Aim aimModel;
 
 	private JLabel backGroundColorText = new JLabel("Background Color:");
 	private JLabel shapeColorText = new JLabel("Shape Color:");
@@ -76,8 +78,18 @@ public class MenuScreen {
 		southPanel.add(startButton);
 		cp.add(BorderLayout.SOUTH, southPanel);
 
-		Aim aimModel = new Aim();
+		aimModel = new Aim();
 		aimModel.init(this);
+
+		// action event listener
+		MenuListener menuListener = new MenuListener(this);
+		addRadioButtonToListener(backgroundColorButtons, menuListener);
+		addRadioButtonToListener(shapeColorButtons, menuListener);
+		addRadioButtonToListener(targetShapeButtons, menuListener);
+		addRadioButtonToListener(targetSizeButtons, menuListener);
+		addRadioButtonToListener(intervalSpeedButtons, menuListener);
+
+
 	}
 
 	// initializes all the radio buttons along with their tag.
@@ -133,6 +145,12 @@ public class MenuScreen {
 		return -1;
 	}
 
+	void addRadioButtonToListener(JRadioButton[] buttonArray, MenuListener menuListener) {
+		for (var button : buttonArray) {
+			button.addActionListener(menuListener);
+		}
+	}
+
 	public JRadioButton[] getBackgroundColorButtons() {
 		return backgroundColorButtons;
 	}
@@ -151,5 +169,15 @@ public class MenuScreen {
 
 	public JRadioButton[] getIntervalSpeedButtons() {
 		return intervalSpeedButtons;
+	}
+
+	/*
+	public MenuScreen getMenu() {
+		return this;
+	}
+	*/
+
+	public Aim getAim() {
+		return aimModel;
 	}
 }
