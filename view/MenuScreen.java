@@ -89,6 +89,14 @@ public class MenuScreen {
 		addRadioButtonToListener(targetSizeButtons, menuListener);
 		addRadioButtonToListener(intervalSpeedButtons, menuListener);
 
+		startButton.addActionListener(e -> {
+			window.getContentPane().removeAll();
+			var gamePanel = new GamePanel(window, aimModel);
+			gamePanel.init();
+			window.pack();
+			window.revalidate();
+		});
+
 
 	}
 
