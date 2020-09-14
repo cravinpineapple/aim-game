@@ -3,8 +3,6 @@ package controller;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import javax.swing.JPanel;
-
 import view.MenuScreen;
 
 public class MenuListener implements ActionListener {
@@ -17,8 +15,7 @@ public class MenuListener implements ActionListener {
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		var source = e.getSource();
-
+		//var source = e.getSource();
 		panel.getAim().updateGameSettings(panel);
 	}
 	
