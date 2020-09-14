@@ -5,7 +5,6 @@ import java.awt.Color;
 import view.MenuScreen;
 
 public class Aim {
-
 	private enum Shape {
 		SQUARE, CIRCLE, TRIANGLE
 	}
@@ -14,15 +13,19 @@ public class Aim {
 	private Color shapeColor;
 	private Shape currentShape;
 	private int intervalSpeed;
-	private int targetSize = 200;
+	private int targetSize;
 	
 	public void init(MenuScreen menu) {
+		updateGameSettings(menu);
+	}
+
+	public void updateGameSettings(MenuScreen menu) {
 		setBackgroundColor(menu.getSelected(menu.getBackgroundColorButtons()));
 		setShapeColor(menu.getSelected(menu.getShapeColorButtons()));
 		setTargetShape(menu.getSelected(menu.getTargetShapeButtons()));
 		setIntervalSpeed(menu.getSelected(menu.getIntervalSpeedButtons()));
 		setTargetSize(menu.getSelected(menu.getTargetSizeButtons()));
-
+		System.out.println("\n\n\n");
 		System.out.println(backgroundColor);
 		System.out.println(shapeColor);
 		System.out.println(currentShape);
@@ -87,6 +90,7 @@ public class Aim {
 	}
 
 	void setTargetSize(int i) {
+		targetSize = 200;
 		targetSize *= i;
 	}
 
