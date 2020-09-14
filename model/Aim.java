@@ -100,6 +100,25 @@ public class Aim {
 		targetSize *= i;
 	}
 
+	public Color getBackgroundColor() {
+		return backgroundColor;
+	}
+
+	public Color getShapeColor() {
+		return shapeColor;
+	}
+
+	public Shape getCurrentShape() {
+		return currentShape;
+	}
+
+	public int getIntervalSpeed() {
+		return intervalSpeed;
+	}
+
+	public int getTargetSize() {
+		return targetSize;
+	}
 
 
 }
