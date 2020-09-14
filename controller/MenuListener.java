@@ -5,17 +5,21 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JPanel;
 
+import view.MenuScreen;
+
 public class MenuListener implements ActionListener {
 
-	private JPanel panel;
+	private MenuScreen panel;
 
-	public MenuListener(JPanel panel) {
+	public MenuListener(MenuScreen panel) {
 		this.panel = panel;
 	}
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		var source = e.getSource();
+
+		panel.getAim().updateGameSettings(panel);
 	}
 	
 }
