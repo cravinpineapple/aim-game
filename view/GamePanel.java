@@ -1,6 +1,7 @@
 package view;
 
 import javax.swing.JFrame;
+import javax.swing.JPanel;
 
 import model.Aim;
 
@@ -15,6 +16,7 @@ public class GamePanel {
 	}
 
 	public void init() {
+		JPanel panel = new JPanel();
 		
 	}
 
