@@ -8,12 +8,18 @@ public class Aim {
 	private enum Shape {
 		SQUARE, CIRCLE, TRIANGLE
 	}
+
+	public enum GameState {
+		READY, PLAYING, DONE
+	}
 	
 	private Color backgroundColor;
 	private Color shapeColor;
 	private Shape currentShape;
 	private int intervalSpeed;
 	private int targetSize;
+	public static GameState gameState = GameState.READY;
+
 	
 	public void init(MenuScreen menu) {
 		updateGameSettings(menu);
