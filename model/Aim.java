@@ -23,15 +23,19 @@ public class Aim {
 	private int targetSize;
 
 	// score tracking variables
-	final public static int TOTAL_TARGETS = 20;
-	public int clicksMissed;
+	final public static int TOTAL_TARGETS = 5; // *** CHANGE TO 20
+	public int currentTarget = 0;
+	public int totalClicks;
 	public int clicksHit;
 
 	
 	public void init(MenuScreen menu) {
 		updateGameSettings(menu);
-		clicksMissed = 0;
+		totalClicks = 0;
 		clicksHit = 0;
+		currentTarget = 0;
+		gameState = GameState.READY;
+
 	}
 
 	public void updateGameSettings(MenuScreen menu) {
@@ -93,19 +97,19 @@ public class Aim {
 	void setIntervalSpeed(int i) {
 		switch (i) {
 			case 0:
-				intervalSpeed = 5000;
+				intervalSpeed = 2000;
 				break;
 			case 1:
-				intervalSpeed = 3000;
+				intervalSpeed = 1000;
 				break;
 			case 2:
-				intervalSpeed = 1000;
+				intervalSpeed = 500;
 				break;
 		}
 	}
 
 	void setTargetSize(int i) {
-		targetSize = 200;
+		targetSize = 50;
 		targetSize *= i;
 	}
 
