@@ -54,12 +54,11 @@ public class GameEventListener implements ActionListener, MouseListener {
 			shapeY[0] = 0;
 			shapeY[1] = 0;
 		}
-		else {
-			aimModel.clicksMissed++;
-		}
+		
+		aimModel.totalClicks++;
 
 		System.out.println("Clicks Hit: " + aimModel.clicksHit);
-		System.out.println("Clicks Missed: " + aimModel.clicksMissed);
+		System.out.println("Total Clicks: " + aimModel.totalClicks);
 	}
 
 	@Override
