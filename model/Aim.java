@@ -12,17 +12,26 @@ public class Aim {
 	public enum GameState {
 		READY, PLAYING, DONE
 	}
+
+	public static GameState gameState = GameState.READY;
 	
+	// settings variables
 	private Color backgroundColor;
 	private Color shapeColor;
 	private Shape currentShape;
 	private int intervalSpeed;
 	private int targetSize;
-	public static GameState gameState = GameState.READY;
+
+	// score tracking variables
+	final public static int TOTAL_TARGETS = 20;
+	public int clicksMissed;
+	public int clicksHit;
 
 	
 	public void init(MenuScreen menu) {
 		updateGameSettings(menu);
+		clicksMissed = 0;
+		clicksHit = 0;
 	}
 
 	public void updateGameSettings(MenuScreen menu) {
