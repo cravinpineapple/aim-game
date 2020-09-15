@@ -47,6 +47,12 @@ public class GameEventListener implements ActionListener, MouseListener {
 
 		if (clickHit(e)) {
 			aimModel.clicksHit++;
+			panel.getCanvas().setTargetHit(true);
+			panel.getCanvas().repaint();
+			shapeX[0] = 0;
+			shapeX[1] = 0;
+			shapeY[0] = 0;
+			shapeY[1] = 0;
 		}
 		else {
 			aimModel.clicksMissed++;
