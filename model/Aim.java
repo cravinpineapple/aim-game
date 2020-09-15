@@ -5,7 +5,7 @@ import java.awt.Color;
 import view.MenuScreen;
 
 public class Aim {
-	private enum Shape {
+	public enum Shape {
 		SQUARE, CIRCLE, TRIANGLE
 	}
 
