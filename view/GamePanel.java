@@ -1,5 +1,7 @@
 package view;
 
+import java.awt.Container;
+
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
@@ -16,8 +18,15 @@ public class GamePanel {
 	}
 
 	public void init() {
+		Container cp = window.getContentPane();
+
+		// creates panel and adds in order: canvas->panel->cp (container)
 		JPanel panel = new JPanel();
-		
+		GameCanvas canvas = new GameCanvas(this, aimModel);
+		panel.add(canvas);
+		cp.add(panel);
+
+
 	}
 
 }
