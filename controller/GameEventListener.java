@@ -47,39 +47,25 @@ public class GameEventListener implements ActionListener, MouseListener {
 
 		if (clickHit(e)) {
 			aimModel.clicksHit++;
-			aimModel.targetsHit++;
 		}
 		else {
 			aimModel.clicksMissed++;
 		}
 
 		System.out.println("Clicks Hit: " + aimModel.clicksHit);
-		System.out.println("Targets Hit: " + aimModel.targetsHit);
 		System.out.println("Clicks Missed: " + aimModel.clicksMissed);
 	}
 
 	@Override
-	public void mouseReleased(MouseEvent e) {
-		// TODO Auto-generated method stub
-
-	}
+	public void mouseReleased(MouseEvent e) { }
 
 	@Override
-	public void mouseEntered(MouseEvent e) {
-		// TODO Auto-generated method stub
-
-	}
+	public void mouseEntered(MouseEvent e) { }
 
 	@Override
-	public void mouseExited(MouseEvent e) {
-		// TODO Auto-generated method stub
-
-	}
+	public void mouseExited(MouseEvent e) { }
 
 	@Override
-	public void actionPerformed(ActionEvent e) {
-		// TODO Auto-generated method stub
-
-	}
+	public void actionPerformed(ActionEvent e) { }
 	
 }
