@@ -74,8 +74,8 @@ public class GameCanvas extends JPanel {
 			}
 		}
 		else if (targetHit) { // clears screen if target was hit
-			g2.setColor(aimModel.getShapeColor()); // sets render color for shapes
-			g2.clearRect(0, 0, GameCanvas.WIDTH, GameCanvas.HEIGHT); // clears screen
+			g2.setColor(aimModel.getBackgroundColor()); // sets render color for shapes
+			g2.fillRect(0, 0, GameCanvas.WIDTH, GameCanvas.HEIGHT); // clears screen
 			targetHit = false;
 		}
 		else {
@@ -84,6 +84,7 @@ public class GameCanvas extends JPanel {
 			randX = rand.nextInt((WIDTH - targetSizeX - 10) - 10) + 10; // (max: (Screen width - shape X size - cushion) - min (10)) + min
 			randY = rand.nextInt((HEIGHT - targetSizeY - 10) - 10) + 10; //   = random number range of nextInt(max - min) - min
 			g2.setColor(aimModel.getShapeColor()); // sets render color for shapes
+			aimModel.currentTarget++; // updates which target we are on
 
 			// shape setting: SQUARE
 			if (aimModel.getCurrentShape() == Aim.Shape.SQUARE) {
@@ -123,14 +124,25 @@ public class GameCanvas extends JPanel {
 	}
 
 	public void setGameTimer() {
-		gameTimer= new Timer(aimModel.getIntervalSpeed(), new ActionListener() {
+		gameTimer = new Timer(aimModel.getIntervalSpeed(), new ActionListener() {
 
 			@Override
-			public void actionPerformed(ActionEvent e) {	
-					repaint();
+			public void actionPerformed(ActionEvent e) {
+				if (aimModel.currentTarget == 5) { // *** CHANGE TO 20
+					System.out.println("Test1");
+					panel.getWindow().getContentPane().removeAll();
+					var statsPanel = new StatsPanel(panel.getWindow(), aimModel);
+					statsPanel.init();
+					panel.getWindow().pack();
+					panel.getWindow().revalidate();
+					System.out.println("Test2");
+					gameTimer.stop();
 				}
+				else
+					repaint();
+			}
 
-			});
+		});
 	}
 
 	public int getRandX() {
