@@ -17,8 +17,8 @@ import model.Aim;
 
 public class GameCanvas extends JPanel {
 
-	public static int WIDTH = 1200;
-	public static int HEIGHT = 600;
+	final public static int WIDTH = 1200;
+	final public static int HEIGHT = 600;
 
 	private Aim aimModel;
 	private GamePanel panel;
@@ -33,8 +33,7 @@ public class GameCanvas extends JPanel {
 	int randX; // random position for target (X cord)
 	int randY; // random position for target (Y cord)
 
-	boolean shown = false;
-	boolean noShown = true;
+	boolean targetHit = false;
 
 
 	public GameCanvas(GamePanel panel, Aim aimModel) {
@@ -73,6 +72,11 @@ public class GameCanvas extends JPanel {
 					g2.drawString("Go!!!", 250, 250);
 					break;
 			}
+		}
+		else if (targetHit) { // clears screen if target was hit
+			g2.setColor(aimModel.getShapeColor()); // sets render color for shapes
+			g2.clearRect(0, 0, GameCanvas.WIDTH, GameCanvas.HEIGHT); // clears screen
+			targetHit = false;
 		}
 		else {
 			Random rand = new Random();
@@ -143,6 +147,10 @@ public class GameCanvas extends JPanel {
 
 	public int getTargetSizeY() {
 		return targetSizeY;
+	}
+
+	public void setTargetHit(boolean bool) {
+		targetHit = bool;
 	}
 }
 
