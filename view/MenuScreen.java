@@ -5,6 +5,7 @@ import java.util.Random;
 import java.awt.Container;
 import java.awt.GridLayout;
 import java.awt.BorderLayout;
+import java.awt.Dimension;
 
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
@@ -20,6 +21,7 @@ public class MenuScreen {
 	
 	private JFrame window;
 	Aim aimModel;
+	public static Dimension MAXSCREEN_DIMENSION;
 
 	private JLabel backGroundColorText = new JLabel("Background Color:");
 	private JLabel shapeColorText = new JLabel("Shape Color:");
@@ -97,7 +99,11 @@ public class MenuScreen {
 			window.revalidate();
 		});
 
-
+		/* Supposed to get max screen width/height but... doesnt... -_-
+		window.pack();
+		MAXSCREEN_DIMENSION = window.getSize();
+		System.out.println("Width: " + MAXSCREEN_DIMENSION.getWidth() + " | Height: " + MAXSCREEN_DIMENSION.getHeight());
+		*/
 	}
 
 	// initializes all the radio buttons along with their tag.
@@ -178,12 +184,7 @@ public class MenuScreen {
 	public JRadioButton[] getIntervalSpeedButtons() {
 		return intervalSpeedButtons;
 	}
-
-	/*
-	public MenuScreen getMenu() {
-		return this;
-	}
-	*/
+	
 
 	public Aim getAim() {
 		return aimModel;
