@@ -11,6 +11,8 @@ import java.awt.Color;
 import javax.swing.JPanel;
 import javax.swing.Timer;
 
+import controller.GameEventListener;
+
 import java.util.Random;
 
 import model.Aim;
@@ -57,19 +59,19 @@ public class GameCanvas extends JPanel {
 		// if statement displays '3...' '2...' '1...' 'Go!' while in READY state
 		if (Aim.gameState == Aim.GameState.READY) {
 			g2.setColor(Color.red);
-			g2.setFont(new Font("Courier New", Font.ITALIC, 30));
+			g2.setFont(new Font("Courier New", Font.ITALIC, 100));
 			switch (countDown) {
 				case 4000:
-					g2.drawString("3...", 250, 250);
+					g2.drawString("3...", 500, 300);
 					break;
 				case 3000:
-					g2.drawString("2...", 250, 250);
+					g2.drawString("2...", 500, 300);
 					break;
 				case 2000:
-					g2.drawString("1...", 250, 250);
+					g2.drawString("1...", 500, 300);
 					break;
 				case 1000:
-					g2.drawString("Go!!!", 250, 250);
+					g2.drawString("Go!!!", 500, 300);
 					break;
 			}
 		}
@@ -77,8 +79,10 @@ public class GameCanvas extends JPanel {
 			g2.setColor(aimModel.getBackgroundColor()); // sets render color for shapes
 			g2.fillRect(0, 0, GameCanvas.WIDTH, GameCanvas.HEIGHT); // clears screen
 			targetHit = false;
+			GameEventListener.prevSuccess = true;
 		}
 		else {
+			GameEventListener.prevSuccess = false;
 			Random rand = new Random();
 			// randX & randY generates random X and Y for shape location
 			randX = rand.nextInt((WIDTH - targetSizeX - 10) - 10) + 10; // (max: (Screen width - shape X size - cushion) - min (10)) + min
@@ -91,12 +95,8 @@ public class GameCanvas extends JPanel {
 				g2.fillRect(randX, randY, targetSizeX, targetSizeY);
 			}
 			// shape setting: CIRCLE
-			else if (aimModel.getCurrentShape() == Aim.Shape.CIRCLE) {
-
-			}
-			// shape setting: TRIANGLEI 
 			else {
-
+				g2.fillOval(randX, randY, targetSizeX, targetSizeY);
 			}
 		}
 	}
@@ -128,14 +128,12 @@ public class GameCanvas extends JPanel {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				if (aimModel.currentTarget == 5) { // *** CHANGE TO 20
-					System.out.println("Test1");
+				if (aimModel.currentTarget == Aim.TOTAL_TARGETS) { // *** CHANGE TO 20
 					panel.getWindow().getContentPane().removeAll();
 					var statsPanel = new StatsPanel(panel.getWindow(), aimModel);
 					statsPanel.init();
 					panel.getWindow().pack();
 					panel.getWindow().revalidate();
-					System.out.println("Test2");
 					gameTimer.stop();
 				}
 				else

@@ -17,6 +17,8 @@ public class GameEventListener implements ActionListener, MouseListener {
 	int[] shapeX = new int[2]; // shape width
 	int[] shapeY = new int[2]; // shape height
 
+	public static boolean prevSuccess = false;
+
 	public GameEventListener(GamePanel panel, Aim aimModel) {
 		this.panel = panel;
 		this.aimModel = aimModel;
@@ -43,7 +45,10 @@ public class GameEventListener implements ActionListener, MouseListener {
 
 	@Override
 	public void mousePressed(MouseEvent e) {
-		updateShapeSize();
+
+		if (!prevSuccess) {
+			updateShapeSize();
+		}
 
 		if (clickHit(e)) {
 			aimModel.clicksHit++;
@@ -56,9 +61,6 @@ public class GameEventListener implements ActionListener, MouseListener {
 		}
 		
 		aimModel.totalClicks++;
-
-		System.out.println("Clicks Hit: " + aimModel.clicksHit);
-		System.out.println("Total Clicks: " + aimModel.totalClicks);
 	}
 
 	@Override

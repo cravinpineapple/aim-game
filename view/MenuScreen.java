@@ -31,7 +31,7 @@ public class MenuScreen {
 
 	private JRadioButton[] backgroundColorButtons = new JRadioButton[3];
 	private JRadioButton[] shapeColorButtons = new JRadioButton[3];
-	private JRadioButton[] targetShapeButtons = new JRadioButton[3];
+	private JRadioButton[] targetShapeButtons = new JRadioButton[2];
 	private JRadioButton[] targetSizeButtons = new JRadioButton[3];
 	private JRadioButton[] intervalSpeedButtons = new JRadioButton[3];
 	private JButton startButton = new JButton("Start!");
@@ -120,8 +120,8 @@ public class MenuScreen {
 
 		targetShapeButtons[0] = new JRadioButton("Square");
 		targetShapeButtons[1] = new JRadioButton("Circle");
-		targetShapeButtons[2] = new JRadioButton("Triangle");
-		initButtonGroup(new ButtonGroup(), targetShapeButtons);
+		//targetShapeButtons[2] = new JRadioButton("Triangle");
+		initButtonGroupShapes(new ButtonGroup(), targetShapeButtons);
 
 		targetSizeButtons[0] = new JRadioButton("Small");
 		targetSizeButtons[1] = new JRadioButton("Medium");
@@ -138,8 +138,16 @@ public class MenuScreen {
 		for (var button : buttonArray) {
 			buttonGroup.add(button);
 		}
-
+		
 		buttonArray[new Random().nextInt(3)].setSelected(true);
+	}
+
+	void initButtonGroupShapes(ButtonGroup buttonGroup, JRadioButton[] buttonArray) {
+		for (var button : buttonArray) {
+			buttonGroup.add(button);
+		}
+		
+		buttonArray[new Random().nextInt(2)].setSelected(true);
 	}
 
 	// adds each button within JRadioButton array into the RadioButton panel.

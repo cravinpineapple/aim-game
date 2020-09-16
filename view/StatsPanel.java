@@ -37,7 +37,7 @@ public class StatsPanel {
 		JPanel centerPanel = new JPanel();
 		// displays Accuracy: #hit/#missed (#.##%)
 		centerPanel.add(new JLabel("Accuracy: " + aimModel.clicksHit + "/" + aimModel.totalClicks + " (" 
-			+ ((aimModel.clicksHit / (double) aimModel.totalClicks) * 100) + "%)"));
+			+ (Math.round((aimModel.clicksHit / (double) aimModel.totalClicks) * 100) * 100) / 100.0 + "%)"));
 		cp.add(BorderLayout.CENTER, centerPanel);
 
 		JPanel southPanel = new JPanel();

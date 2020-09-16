@@ -23,7 +23,7 @@ public class Aim {
 	private int targetSize;
 
 	// score tracking variables
-	final public static int TOTAL_TARGETS = 5; // *** CHANGE TO 20
+	final public static int TOTAL_TARGETS = 10; // *** CHANGE TO 20
 	public int currentTarget = 0;
 	public int totalClicks;
 	public int clicksHit;
@@ -44,12 +44,6 @@ public class Aim {
 		setTargetShape(menu.getSelected(menu.getTargetShapeButtons()));
 		setIntervalSpeed(menu.getSelected(menu.getIntervalSpeedButtons()));
 		setTargetSize(menu.getSelected(menu.getTargetSizeButtons()));
-		System.out.println("\n\n\n");
-		System.out.println(backgroundColor);
-		System.out.println(shapeColor);
-		System.out.println(currentShape);
-		System.out.println(targetSize);
-		System.out.println(intervalSpeed);
 	}
 
 	void setBackgroundColor(int i) {
